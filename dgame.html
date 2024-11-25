@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<style>
+			body{
+				box-sizing: border-box;
+				margin: 0;
+				background: url('forest.jpg');
+				font-family: 'Noto Sans', sans-serif;
+				cursor: url('icons8-hammer-64.png'), default;
+				background-size: cover;
+			}
+			div{
+				float: left;
+			}
+			.container{
+				width: 100%;
+				
+			}
+			.headerr1{
+				width: 50%;
+                font-size: 40px;
+                color: blanchedalmond;
+                text-align: left;
+				font-weight: 900;
+				
+			}
+			.headerr2{
+				width: 50%;
+                font-size: 40px;
+                color: blanchedalmond;
+                text-align: left;
+				font-weight: 900;
+			}
+			button{	
+				border: none;
+				padding: 20px 45px;
+				font-size: 30px;
+				border-radius: 10px;
+				background-color: #B4BE89;
+				box-shadow: 10px 10px 0px 0px #93A154;
+				color: white;
+				font-family: 'Noto Sans', sans-serif;
+				font-weight: 900;
+				margin: 15%;
+				margin-top: 30%;
+			}
+			button:hover{
+				transition: 0.5s;
+				background-color: #A7B46E;
+				box-shadow: 0px 0px 0px #93A154;
+			}
+			img{
+				position: absolute;
+				width: 10%;
+				top: 50%;
+				left: 50%;
+			}
+		</style>
+	</head>
+	<body id="torso">
+		<div class="container">
+			<div class="headerr1" id="sc">SCORE: 0</div>
+			<div class="headerr2" id="sc2">TIME: 60sec</div>
+		</div>
+
+			<center><button id="btn" onclick="fun4()">START THE GAME!</button></center>
+			<img id="bee" src="" onclick="fun2()">
+
+		<script>
+			let c=1;
+			let t=0;
+			let l=0;
+			let tm=60;
+			let p,q;
+			
+			function fun1(){
+				document.getElementById('bee').src = "bee.png";
+				document.getElementById('btn').style.visibility = "hidden";
+				
+				tm--;
+				document.getElementById("sc2").innerHTML = "TIME: "+tm+"sec";
+				if(tm==0){
+					clearInterval(q);
+					clearInterval(p);
+					
+					window.alert("GAME OVER \n SCORE: "+c);
+					c=0;
+					document.getElementById('btn').style.visibility = "visible";
+					document.getElementById('btn').innerHTML = "PLAY AGAIN!";
+				}
+				
+			}
+			function fun2(){
+				if(tm!=0){
+					c++;
+					document.getElementById("sc").innerHTML = "SCORE: "+c;
+					document.getElementById('bee').src = "bl.png";
+					document.getElementById('torso').style.cursor = url;
+				}
+			}
+			function fun3(){
+				
+				t=Math.random()*500;
+				l=Math.random()*500;
+				document.getElementById('bee').style.top = t+"px"; 
+				document.getElementById('bee').style.left = l+"px";
+			}
+			function fun4(){
+				q=setInterval("fun1()",1000);
+				p=setInterval("fun3()",1000);
+				tm=60;
+				c=0;
+				document.getElementById("sc").innerHTML = "SCORE: "+c;
+			}
+			
+		</script>
+	</body>
+</html>
